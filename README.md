@@ -1,14 +1,5 @@
 # PureFront-Boilerplate
 
-## Funções
-
-- Compila Sass
-- Minifica CSS
-- Torna css compatível com vários navegadores
-- Concatena arquivos js e torna compatível com vários navegadores
-- Minifica imagens do tipo png, jpg, gif, svg
-- Live Preview já integrado
-
 ## Configurações
 
 Baixe o arquivo .zip ou use ou faça um clone usando o comando:
@@ -23,13 +14,33 @@ Agora acesse o diretório usando:
 cd PureFront-Boilerplate
 ```
 
-## Comandos
+## Comandos úteis
 
 1 - Baixa todas as dependências
 
 ```
 npm install
 ```
+
+2 - Execute o comando abaixo para executar as tarefas do gulp e abrir o livre preview
+
+```
+gulp
+```
+
+Esse comando executará as seguintes tarefas:
+
+- Compilar sass
+- Minifica CSS
+- Torna css compatível com vários navegadores
+- Gerar o arquivo style.css na pasta /dist/css/
+- Concatena arquivos js
+- Torna compatível com vários navegadores
+- Gera o arquivo main.min.js na pasta /dist/js/
+- Minifica imagens do tipo png, jpg, gif, svg
+- Envia as imagens otimizadas para a pasta /dist/img/
+- Após executar o comando gulp acesse http://localhost:3000
+- Monitora alterações no CSS e no JS, caso algum código seja alterado ele repete todo processo e gera novos arquivos style.css e main.min.js
 
 ## Tecnologias
 
