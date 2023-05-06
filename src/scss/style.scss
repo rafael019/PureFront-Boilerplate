@@ -1,2 +1,9 @@
-@import "./partials/geral";
-@import "./partials/header";
+@import './global/reset';
+@import './utilities/typography';
+@import './utilities/colors';
+
+@import './global/header';
+@import './global/footer';
+
+// Utilidades
+@import './utilities/components';

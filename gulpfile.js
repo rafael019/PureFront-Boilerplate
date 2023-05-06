@@ -23,7 +23,7 @@ exports.buildSass = buildSass;
 function gulpJS() {
   return gulp
     .src("src/js/*.js")
-    .pipe(concat("main.js"))
+    .pipe(concat("main.min.js"))
     .pipe(
       babel({
         presets: ["@babel/env"],
