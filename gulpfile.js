@@ -5,13 +5,16 @@ const browserSync = require("browser-sync").create();
 const concat = require("gulp-concat");
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
-const minifyCSS = require("gulp-clean-css");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const newer = require("gulp-newer");
 
 // Compila Sass e envia para pasta dist/asses/css
 function buildSass() {
   return gulp
     .src("src/scss/**/*.scss")
     .pipe(gulpSass({ outputStyle: "compressed" }))
+    .pipe(postcss([autoprefixer()]))
     .pipe(gulp.dest("dist/css/"))
     .pipe(browserSync.stream()); // Depois de compilar da o Reload da Página
 }
@@ -36,6 +39,18 @@ function gulpJS() {
 
 exports.gulpJS = gulpJS;
 
+// Função que otimiza as imagens
+async function optimizeImages() {
+  const { default: imagemin } = await import("gulp-imagemin");
+  return gulp
+    .src("src/img/**/*.{jpg,jpeg,png,gif,svg}")
+    .pipe(newer("dist/img"))
+    .pipe(imagemin())
+    .pipe(gulp.dest("dist/img"));
+}
+
+exports.optimizeImages = optimizeImages;
+
 // Iniciar o Browser e faz o Live Reload
 function browser() {
   browserSync.init({
@@ -55,13 +70,10 @@ function watch() {
 
 exports.watch = watch;
 
-exports.default = gulp.parallel(watch, browser, buildSass, gulpJS);
-
-// Webpack
-// Compila Sass
-// Monitora Mudanças
-// Exibe no Navegador
-// Concatena Javascript
-// Renomeia pra arquivo.min
-
-// Aula 5 - Gulp Autoprefixer
+exports.default = gulp.parallel(
+  watch,
+  browser,
+  buildSass,
+  gulpJS,
+  optimizeImages
+);
