@@ -1,4 +1,5 @@
 # PureFront-Boilerplate
+Boilerplate usado por muito tempo para converter Layouts PSD e Figma para HTML e CSS, pra quem quiser aprimorar ou até mesmo para quem estiver começando agora os estudos de html, css, sass e gulp.
 
 ## Configurações
 
